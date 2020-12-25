@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "academyapp-e3edd"
+  },
+  "targets": {
+    "academyapp-e3edd": {
+      "hosting": {
+        "academy": [
+          "dieacademy"
+        ]
+      }
+    }
+  }
+}

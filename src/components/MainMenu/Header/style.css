@@ -1,0 +1,29 @@
+.menuButton {
+    margin-right: 2px;
+}
+
+@media (min-width: 0px) and (orientation: landscape) {
+    .MuiToolbar-regular {
+        min-height: 0px;
+    }
+}
+
+.MuiToolbar-regular {
+    min-height: 0px !important;
+}
+
+.MuiGrid-root {
+    height: 100%;
+    width: 100%;
+}
+
+#mainHeader {
+    height: 6vh;
+}
+
+#logInButton {
+    padding: 0;
+}
+#signOutButton svg {
+    width: 30px !important;
+}

@@ -1,0 +1,21 @@
+.OverviewBar {
+    height: 6vh;
+    margin-top: 6vh;
+}
+
+.OverviewHeader {
+    font-size: x-large;
+    padding-top: 5px !important;
+    text-align: center;
+}
+
+.OverviewGridItem {
+    padding: 0px !important;
+    height: auto;
+    width: 100%;
+}
+
+.OverviewBackButton {
+    padding: 0px !important;
+    margin-left: 20px !important;
+}

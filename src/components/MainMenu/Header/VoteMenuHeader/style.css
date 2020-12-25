@@ -1,0 +1,28 @@
+.VoteBar {
+    /* background-color: rgba(1, 1, 1, 0) !important; */
+    height: 6vh;
+    margin-top: 6vh;
+}
+
+.VoteHeader {
+    font-size: x-large;
+    padding-top: 5px !important;
+    text-align: center;
+}
+
+.VoteGridItem {
+    padding: 0px !important;
+    height: auto;
+    width: 100%;
+}
+
+.BackButton {
+    padding: 0px !important;
+    margin-left: 20px !important;
+}
+
+#overviewButton {
+    margin-top: -50px;
+    width: 30px;
+    height: 30px;
+}

@@ -1,0 +1,8 @@
+.HistoryGridItem {
+    text-align: center;
+}
+
+.votingHistoryObject ~ .votingHistoryObject {
+    border-top: 1px inset white;
+    margin-top: 5px;
+}

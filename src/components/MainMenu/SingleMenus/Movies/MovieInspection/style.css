@@ -1,0 +1,61 @@
+.MovieThumbnail {
+    min-height: 20vh;
+    min-width: 40%;
+    max-height: 40vh;
+    max-width: 80%;
+}
+
+.InspectionContent {
+    margin-top: 3vh;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
+}
+
+.IndividualRatings {
+    font-size: x-large;
+}
+
+#dateField {
+    font-size: x-large !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    text-align: center;
+}
+
+.inspectionItem {
+    padding-top: 10px;
+}
+
+.editIcon {
+    color: white;
+    position: absolute !important;
+    bottom: 10px;
+    right: 10px;
+}
+
+#editIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.rateIcon {
+    color: white;
+    position: absolute !important;
+    bottom: 10px;
+    left: 10px;
+}
+
+#rateIcon {
+    width: 30px;
+    height: 30px;
+}
+
+#ActiveEditing {
+    color: green !important;
+}

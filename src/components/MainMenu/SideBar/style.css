@@ -1,0 +1,30 @@
+.itemList {
+    width: available;
+}
+
+.fullList {
+    margin-top: 4vh;
+    width: available;
+}
+
+.MuiDrawer-paperAnchorLeft {
+    margin-top: 7vh;
+    width: 75%;
+}
+
+.singleItem {
+    height: 15vh;
+}
+
+.MenuButton {
+    padding: 0px !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.MenuIconButton {
+    color: white;
+    margin-left: -10px;
+}

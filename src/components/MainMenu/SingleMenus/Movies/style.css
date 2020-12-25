@@ -1,0 +1,25 @@
+.MovieList {
+    position: relative;
+}
+
+.AddButtonDiv {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: large;
+}
+
+#CircleButton {
+    width: 75px;
+    height: 75px;
+}
+
+.MovieObject ~ .MovieObject {
+    border-top: 1px inset white;
+}
+
+.MovieObject {
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
