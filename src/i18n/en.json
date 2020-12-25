@@ -3,6 +3,13 @@
     "sidebar.Home": "Home",
     "sidebar.Movies": "Movies",
     "sidebar.Voting": "Voting",
-    "sidebar.Laws": "Laws"
+    "sidebar.Laws": "Laws",
+    "main.login": "login",
+    "main.president": "President",
+    "main.vice_president": "Vice president",
+    "main.committee": "Committee",
+    "laws.constitution": "Constitution",
+    "laws.stgb": "Criminal Code",
+    "laws.stpo": "Criminal Procedure"
   }
 }

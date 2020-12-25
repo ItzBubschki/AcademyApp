@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import * as ROUTES from '../../../constants/routes';
 import SignOutButton from '../../PreMMPages/SignOut';
+import {FormattedMessage} from 'react-intl';
 
 export default class LoginButton extends React.Component {
     constructor(props) {
@@ -40,12 +41,15 @@ export default class LoginButton extends React.Component {
                     <div>
                         {
                             this.state.loggedIn ? <SignOutButton/> :
-                                <Button variant="outlined" size="small" id="logInButton" onClick={this.logIn}>log
-                                    in</Button>
+                                <Button variant="outlined" size="small" id="logInButton"
+                                        onClick={this.logIn}><FormattedMessage id={'main.login'}
+                                                                               defaultMessage="log in"/>
+                                </Button>
                         }
                     </div>
                 }
             </div>
         );
     }
+
 }

@@ -10,6 +10,7 @@ class LawContent extends React.Component {
             stgb: [],
             stpo: [],
             openMenu: 'Verfassung',
+            openMenuId: 'constitution',
             error: ''
         };
         this.checkAuthentication().then(() => this.getLawList());
@@ -91,7 +92,19 @@ class LawContent extends React.Component {
                 }
                 break;
         }
-        this.setState({openMenu: nextMenu});
+        let nextMenuId;
+        switch (nextMenu) {
+            case 'Verfassung':
+                nextMenuId = 'constitution';
+                break;
+            case 'StGB':
+                nextMenuId = 'stgb';
+                break;
+            default:
+                nextMenuId = 'stpo';
+                break;
+        }
+        this.setState({openMenu: nextMenu, openMenuId: nextMenuId});
     };
 
     compare = (a, b) => {
@@ -136,7 +149,8 @@ class LawContent extends React.Component {
             <div>
                 <LawMenuHeader
                     handleClick={this.switchLawMenu}
-                    lawType={this.state.openMenu}
+                    lawTypeText={this.state.openMenu}
+                    lawTypeId={`laws.${this.state.openMenuId}`}
                 />
                 <div style={{marginTop: '10vh'}}>{LawList}</div>
             </div>

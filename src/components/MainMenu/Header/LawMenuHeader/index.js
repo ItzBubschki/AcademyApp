@@ -1,17 +1,18 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import IconButton from "@material-ui/core/IconButton";
-import "./style.css";
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import IconButton from '@material-ui/core/IconButton';
+import './style.css';
+import {FormattedMessage} from 'react-intl';
 
 class LawMenuHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lawType: props.lawType,
+            lawType: props.lawType
         };
     }
 
@@ -32,7 +33,7 @@ class LawMenuHeader extends React.Component {
                             </IconButton>
                         </Grid>
                         <Grid item xs={10} className="MovieGridItem">
-                            {this.props.lawType}
+                            <FormattedMessage id={this.props.lawTypeId} defaultMessage={this.props.lawTypeText}/>
                         </Grid>
                         <Grid item xs={1} className="MovieGridItem">
                             <IconButton
