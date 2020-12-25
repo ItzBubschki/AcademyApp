@@ -7,8 +7,9 @@ This was my very first React project. I used this to learn React so keep that in
 The website can be visited at https://dieacademy.web.app/Home. It is hosted on Firebase and will automatically deploy on
 merges onto main
 
-There are still a few things just in German, but I'm currently working on i18n so just wait a little until it's fully
-available in english.
+The website is available in German and in English and it will change depending on your browser language. 
+
+Altough the laws themselves were written in German and won't be translated into English as it just isn't worht the effort. 
 
 The website is meant for mobile devices is PC optimized.
 
