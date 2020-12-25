@@ -1,11 +1,12 @@
 import React from 'react';
 
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
+import {FormattedMessage} from 'react-intl';
 import * as ROUTES from '../../../constants/routes';
 import './style.css';
+import {ListItemText} from '@material-ui/core';
 
 class SideBarComponentList extends React.Component {
     constructor(props) {
@@ -46,7 +47,7 @@ class SideBarComponentList extends React.Component {
                     <Divider/>
                     <SideBarComponent
                         imageRoute={'Images/filme.png'}
-                        text="Filme"
+                        text="Movies"
                         itemKey="Movies"
                         route={ROUTES.MOVIES}
                         imageHeight="50"
@@ -56,7 +57,7 @@ class SideBarComponentList extends React.Component {
                     <Divider/>
                     <SideBarComponent
                         imageRoute={'Images/verfassung.png'}
-                        text="Gesetze"
+                        text="Laws"
                         itemKey="Laws"
                         route={ROUTES.LAWS}
                         imageHeight="60"
@@ -65,7 +66,7 @@ class SideBarComponentList extends React.Component {
                     />
                     <Divider/>
                     {this.state.hasFullAccess ?
-                        <SideBarComponent imageRoute={'Images/vote.png '} text="Wahl"
+                        <SideBarComponent imageRoute={'Images/vote.png '} text="Voting"
                                           itemKey="Voting"
                                           route={ROUTES.VOTING}
                                           imageHeight="50"
@@ -96,7 +97,7 @@ function SideBarComponent(props) {
                     height={props.imageHeight}
                 />
             </ListItemIcon>
-            <ListItemText primary={props.text}/>
+            <ListItemText><FormattedMessage id={`sidebar.${props.itemKey}`} defaultMessage={props.text}/></ListItemText>
         </ListItem>
     );
 }
