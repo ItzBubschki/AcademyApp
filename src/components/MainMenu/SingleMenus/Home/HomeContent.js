@@ -2,6 +2,7 @@ import React from 'react';
 import {Container} from '@material-ui/core';
 import Logo from '../../../Logo';
 import './style.css';
+import {FormattedMessage} from 'react-intl';
 
 class HomeContent extends React.Component {
     constructor(props) {
@@ -71,13 +72,16 @@ class HomeContent extends React.Component {
             <div id="membersOverview">
                 <Container id="mainContainer" component="main" maxWidth="xs">
                     <div className="President">
-                        <p>Präsident: {this.state.President}</p>
+                        <p><FormattedMessage id={'main.president'}
+                                             defaultMessage={'President'}/>: {this.state.President}
+                        </p>
                     </div>
                     <div className="Vice">
-                        <p>Vizepräsident: {this.state.Vice}</p>
+                        <p><FormattedMessage id={'main.vice_president'}
+                                             defaultMessage={'Vice president'}/>: {this.state.Vice}</p>
                     </div>
                     <div className="Members">
-                        <p>Vorstand:</p>
+                        <p><FormattedMessage id={'main.committee'} defaultMessage={'Committee'}/>:</p>
                         {MembersList}
                     </div>
                     <div className="spacer"/>

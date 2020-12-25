@@ -1,0 +1,15 @@
+{
+  "messages": {
+    "sidebar.Home": "Startseite",
+    "sidebar.Movies": "Filme",
+    "sidebar.Voting": "Wahl",
+    "sidebar.Laws": "Gesetze",
+    "main.login": "anmelden",
+    "main.president": "Präsident",
+    "main.vice_president": "Vizepräsident",
+    "main.committee": "Vorstand",
+    "laws.constitution": "Verfassung",
+    "laws.stgb": "StGB",
+    "laws.stpo": "StPO"
+  }
+}
