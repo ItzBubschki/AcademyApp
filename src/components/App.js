@@ -12,6 +12,7 @@ import MovieInspection from './MainMenu/SingleMenus/Movies/MovieInspection';
 import AddMovie from './MainMenu/SingleMenus/Movies/AddMovie';
 import VoteMenu from './MainMenu/SingleMenus/VotingMenu/VoteMenu';
 import RoundOverview from './MainMenu/SingleMenus/VotingMenu/VoteMenu/RoundOverview';
+import Imprint from './PreMMPages/Imprint';
 
 import detectBrowserLanguage from 'detect-browser-language';
 import {IntlProvider} from 'react-intl';
@@ -53,6 +54,7 @@ class App extends React.Component {
                                 <div>
                                     <Switch>
                                         <Route exact path={ROUTES.LANDING} component={LandingPage}/>
+                                        <Route path={ROUTES.IMPRINT} component={Imprint}/>
                                         <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
                                         <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
                                         <Route

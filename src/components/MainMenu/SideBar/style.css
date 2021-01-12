@@ -28,3 +28,14 @@
     color: white;
     margin-left: -10px;
 }
+
+#help-icon {
+    display: flex;
+    height: 100%;
+}
+
+#help-icon svg {
+    position: absolute;
+    bottom: 65px;
+    left: 10px;
+}

@@ -7,6 +7,7 @@ import {FormattedMessage} from 'react-intl';
 import * as ROUTES from '../../../constants/routes';
 import './style.css';
 import {ListItemText} from '@material-ui/core';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 
 class SideBarComponentList extends React.Component {
     constructor(props) {
@@ -75,6 +76,9 @@ class SideBarComponentList extends React.Component {
                         /> : ''}
 
                 </List>
+                <div id="help-icon" onClick={() => this.openMenu(ROUTES.IMPRINT)}>
+                    <HelpOutlineIcon/>
+                </div>
             </div>
         );
     }
