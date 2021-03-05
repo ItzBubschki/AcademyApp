@@ -9,7 +9,7 @@ merges onto main
 
 The website is available in German and in English and it will change depending on your browser language. 
 
-Altough the laws themselves were written in German and won't be translated into English as it just isn't worht the effort. 
+Although the laws themselves were written in German and won't be translated into English as it just isn't worth the effort. 
 
 The website is meant for mobile devices is PC optimized.
 
