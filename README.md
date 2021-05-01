@@ -4,8 +4,7 @@ This is the progressive web app made with react for the official Academy (not th
 
 This was my very first React project. I used this to learn React so keep that in mind while looking at the code.
 
-The website can be visited at https://dieacademy.web.app/Home. It is hosted on Firebase and will automatically deploy on
-merges onto main
+The website can be visited at https://dieacademy.web.app/Home. It is hosted on Firebase.
 
 The website is available in German and in English and it will change depending on your browser language. 
 
