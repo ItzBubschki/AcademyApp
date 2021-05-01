@@ -10,7 +10,7 @@ The website is available in German and in English and it will change depending o
 
 Although the laws themselves were written in German and won't be translated into English as it just isn't worth the effort. 
 
-The website is meant for mobile devices is PC optimized.
+The website is meant for mobile devices but it should still look good on PC. (For optimal experience you can use the Browser devtools to view the page on a Smartphone)
 
 Android users can also download the app from the play
 store (https://play.google.com/store/apps/details?id=com.ItzBubschki.AcademyApp).
