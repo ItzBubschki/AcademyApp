@@ -18,16 +18,6 @@ export default class LoginButton extends React.Component {
         };
     }
 
-    componentDidMount() {
-        this.checkLoggedIn();
-    }
-
-    checkLoggedIn = async () => {
-        const loggedIn = this.props.firebase.isUserActuallyLoggedIn();
-        this.setState({loggedIn: loggedIn, loading: false});
-        localStorage.setItem('loggedIn', loggedIn.toString());
-    };
-
     logIn = () => {
         const currentPage = window.location.href.split('/')[3];
         const destination = ROUTES.SIGN_IN + `?redirect_to=${currentPage}`;

@@ -18,7 +18,7 @@ const INITIAL_STATE = {
     email: '',
     password: '',
     rememberUser: false,
-    error: ''
+    error: '',
 };
 
 class SignInFormBase extends React.Component {
@@ -39,10 +39,11 @@ class SignInFormBase extends React.Component {
                     .then(() => {
                         this.setState({...INITIAL_STATE});
                         const redirect = new URLSearchParams(this.props.location.search).get('redirect_to');
-                        if (redirect === '') {
-                            this.props.history.push(ROUTES.HOME);
-                        } else {
+                        console.log(redirect);
+                        if (redirect) {
                             this.props.history.push(redirect);
+                        } else {
+                            this.props.history.push(ROUTES.HOME);
                         }
                     })
                     .catch((error) => {

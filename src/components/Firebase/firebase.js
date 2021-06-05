@@ -11,21 +11,33 @@ const config = {
     databaseURL: process.env.REACT_APP_DATABASE_URL,
     projectId: process.env.REACT_APP_PROJECT_ID,
     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    appId: process.env.REACT_APP_APP_ID
+    appId: process.env.REACT_APP_APP_ID,
 };
 
 class Firebase {
     constructor() {
+        console.log('Firebase constructor is called.');
         this.app = app.initializeApp(config);
         this.auth = this.app.auth();
         this.db = this.app.firestore();
         this.functions = this.app.functions('europe-west1');
         this.storage = this.app.storage('gs://academyapp-e3edd.appspot.com/');
+        console.log(`Logged in in the beginning ${this.auth.currentUser != null}.`);
+        this.auth.onAuthStateChanged(function(user) {
+            if (user) {
+                console.log(`User ${user.email} logged in.`);
+                localStorage.setItem('loggedIn', 'true');
+            } else {
+                this.auth.setStatePersistence('local');
+                this.auth.signInAnonymously().then(() => {
+                    console.log('Logged in anon.');
+                    localStorage.setItem('loggedIn', 'false');
+                });
+            }
+        });
     }
 
     //#region auth APi
-
-    logInAnonymously = () => this.auth.signInAnonymously();
 
     doCreateUserWithEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
@@ -45,22 +57,6 @@ class Firebase {
     getUid = () => this.auth.currentUser.uid;
 
     getUserMail = () => this.auth.currentUser.email;
-
-    isUserLoggedIn = () => {
-        return this.auth.currentUser != null;
-    };
-
-    isUserActuallyLoggedIn = () => {
-        return this.isUserLoggedIn() && !this.auth.currentUser.isAnonymous;
-    };
-
-    checkFullAccess = async () => {
-        const user = this.getUserMail();
-        const doc = await this.getDocument('Members', 'Roles');
-        const data = doc.data();
-        return data.Members.includes(user);
-
-    };
     //#endregion
 
     //#region Firestore API
@@ -83,7 +79,7 @@ class Firebase {
         limit,
         firstQueryElement,
         queryOperator,
-        secondQueryElement
+        secondQueryElement,
     ) =>
         this.db
             .collection(collection)

@@ -1,7 +1,8 @@
-import React from "react";
-import NameButton from "./NameButton";
-import {Container} from "@material-ui/core";
-import * as ROUTES from "../../../constants/routes";
+import React from 'react';
+import NameButton from './NameButton';
+import {Container} from '@material-ui/core';
+import * as ROUTES from '../../../constants/routes';
+import checkFullAccess from '../../Firebase/FirebaseFunctions';
 
 class NameList extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class NameList extends React.Component {
     }
 
     checkMembership = async () => {
-        const isMember = await this.props.firebase.checkFullAccess();
+        const isMember = await checkFullAccess(this.props.firebase);
         if (!isMember) {
             this.handleClick("Guest");
         }

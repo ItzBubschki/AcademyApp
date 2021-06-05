@@ -1,17 +1,18 @@
-import React from "react";
-import MovieInspectionHeader from "../../../Header/MovieInspectionHeader";
-import * as ROUTES from "../../../../../constants/routes";
-import {Button, CircularProgress, Container, Grid, IconButton, TextField,} from "@material-ui/core";
-import ThumbsUpDownIcon from "@material-ui/icons/ThumbsUpDown";
-import EditIcon from "@material-ui/icons/Edit";
-import RemoveIcon from "@material-ui/icons/Remove";
-import AddIcon from "@material-ui/icons/Add";
-import "./style.css";
+import React from 'react';
+import MovieInspectionHeader from '../../../Header/MovieInspectionHeader';
+import * as ROUTES from '../../../../../constants/routes';
+import {Button, CircularProgress, Container, Grid, IconButton, TextField} from '@material-ui/core';
+import ThumbsUpDownIcon from '@material-ui/icons/ThumbsUpDown';
+import EditIcon from '@material-ui/icons/Edit';
+import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@material-ui/icons/Add';
+import './style.css';
+import checkFullAccess from '../../../../Firebase/FirebaseFunctions';
 
 class InspectionContent extends React.Component {
     constructor(props) {
         super(props);
-        let currentDate = "";
+        let currentDate = '';
         if (
             props.history.location.state &&
             props.history.location.state.transferedMovie
@@ -136,8 +137,9 @@ class InspectionContent extends React.Component {
 
     checkFullAccess = async () => {
         let hasFullAccess = false;
-        if (this.props.firebase.isUserLoggedIn()) {
-            hasFullAccess = await this.props.firebase.checkFullAccess();
+        console.log('Inspection checking if logged in.');
+        if (this.props.firebase.auth.currentUser != null) {
+            hasFullAccess = await checkFullAccess(this.props.firebase);
         }
         this.setState({hasFullAccess: hasFullAccess});
     };

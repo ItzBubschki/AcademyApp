@@ -18,7 +18,7 @@ const INITIAL_STATE = {
     password: '',
     confirmPassword: '',
     rememberUser: false,
-    error: ''
+    error: '',
 };
 
 class SignInFormBase extends React.Component {
@@ -29,18 +29,23 @@ class SignInFormBase extends React.Component {
 
     onSubmit = (event) => {
         const {email, password} = this.state;
+        const newPersistence = this.state.rememberUser ? 'local' : 'session';
 
         this.props.firebase
-            .doCreateUserWithEmailAndPassword(email, password)
+            .setStatePersistence(newPersistence)
             .then(() => {
-                this.setState({...INITIAL_STATE});
-                const redirect = new URLSearchParams(this.props.location.search).get('redirect_to');
-                if (redirect === '') {
+                this.props.firebase.doCreateUserWithEmailAndPassword(email, password).then(() => {
+                    this.setState({...INITIAL_STATE});
+                    const redirect = new URLSearchParams(this.props.location.search).get('redirect_to');
+                    if (redirect) {
+                        this.props.history.push(redirect);
+                    } else {
+                        this.props.history.push(ROUTES.HOME);
+                    }
                     this.props.history.push(ROUTES.HOME);
-                } else {
-                    this.props.history.push(redirect);
-                }
-                this.props.history.push(ROUTES.HOME);
+                }).catch((error) => {
+                    this.setState({error});
+                });
             })
             .catch((error) => {
                 this.setState({error});

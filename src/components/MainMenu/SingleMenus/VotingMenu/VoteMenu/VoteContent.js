@@ -1,6 +1,6 @@
-import React from "react";
-import VoteMenuHeader from "../../../Header/VoteMenuHeader";
-import * as ROUTES from "../../../../../constants/routes";
+import React from 'react';
+import VoteMenuHeader from '../../../Header/VoteMenuHeader';
+import * as ROUTES from '../../../../../constants/routes';
 import {
     Button,
     CircularProgress,
@@ -11,19 +11,20 @@ import {
     InputLabel,
     MenuItem,
     Select,
-} from "@material-ui/core";
-import CanvasDraw from "react-canvas-draw";
-import moment from "moment";
-import "./style.css";
+} from '@material-ui/core';
+import CanvasDraw from 'react-canvas-draw';
+import moment from 'moment';
+import './style.css';
+import checkFullAccess from '../../../../Firebase/FirebaseFunctions';
 
 class VoteContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             temporaryVotes: [],
-            activeVote: "",
+            activeVote: '',
             candidateList: [],
-            activeCanidate: "",
+            activeCanidate: '',
             eligible: true,
             ineligibleReason: "",
             loading: false,
@@ -148,7 +149,7 @@ class VoteContent extends React.Component {
                         }
                     });
                 }
-                const hasFullAccess = await this.props.firebase.checkFullAccess();
+                const hasFullAccess = await checkFullAccess(this.props.firebase);
                 if (!hasFullAccess) {
                     eligible = false;
                     ineligibleReason = "you don't have permission to vote";

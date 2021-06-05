@@ -8,13 +8,14 @@ import * as ROUTES from '../../../constants/routes';
 import './style.css';
 import {ListItemText} from '@material-ui/core';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import checkFullAccess from '../../Firebase/FirebaseFunctions';
 
 class SideBarComponentList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             loggedIn: false,
-            hasFullAccess: false
+            hasFullAccess: false,
         };
     }
 
@@ -22,9 +23,9 @@ class SideBarComponentList extends React.Component {
         this.checkAuthentication();
     }
 
-    checkAuthentication = async () => {
-        if (this.props.firebase.isUserActuallyLoggedIn()) {
-            const hasFullAccess = await this.props.firebase.checkFullAccess();
+    checkAuthentication = async() => {
+        if (this.props.firebase.auth.currentUser != null && !this.props.firebase.auth.currentUser.isAnonymous) {
+            const hasFullAccess = await checkFullAccess(this.props.firebase);
             this.setState({authenticated: true, hasFullAccess: hasFullAccess});
         }
     };

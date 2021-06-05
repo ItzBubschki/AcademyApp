@@ -22,7 +22,8 @@
 }
 
 #overviewButton {
-    margin-top: -50px;
+    margin-top: -65px;
     width: 30px;
     height: 30px;
+    padding-right: 50px;
 }

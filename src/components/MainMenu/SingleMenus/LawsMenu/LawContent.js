@@ -11,9 +11,9 @@ class LawContent extends React.Component {
             stpo: [],
             openMenu: 'Verfassung',
             openMenuId: 'constitution',
-            error: ''
+            error: '',
         };
-        this.checkAuthentication().then(() => this.getLawList());
+        this.getLawList();
     }
 
     getLawList = () => {
@@ -69,7 +69,7 @@ class LawContent extends React.Component {
 
     switchLawMenu = (next) => {
         let nextMenu = '';
-        switch (this.state.openMenu) {
+        switch(this.state.openMenu) {
             case 'StGB':
                 if (next) {
                     nextMenu = 'StPO';
@@ -93,7 +93,7 @@ class LawContent extends React.Component {
                 break;
         }
         let nextMenuId;
-        switch (nextMenu) {
+        switch(nextMenu) {
             case 'Verfassung':
                 nextMenuId = 'constitution';
                 break;
@@ -119,16 +119,9 @@ class LawContent extends React.Component {
         return 0;
     };
 
-    checkAuthentication = async () => {
-        const authenticated = await this.props.firebase.isUserLoggedIn();
-        if (!authenticated) {
-            await this.props.firebase.setStatePersistence('local').then(() => this.props.firebase.logInAnonymously());
-        }
-    };
-
     render() {
         let LawList;
-        switch (this.state.openMenu) {
+        switch(this.state.openMenu) {
             case 'StGB':
                 LawList = this.state.stgb.map((law) => (
                     <LawObject key={law.id} law={law}/>

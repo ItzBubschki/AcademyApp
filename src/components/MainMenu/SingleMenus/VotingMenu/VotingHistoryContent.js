@@ -4,6 +4,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import moment from 'moment';
 import * as ROUTES from '../../../../constants/routes';
 import './style.css';
+import checkFullAccess from '../../../Firebase/FirebaseFunctions';
 
 class VotingHistoryContent extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class VotingHistoryContent extends React.Component {
             loading: false,
             voteCreatable: false,
             error: '',
-            hasFullAccess: false
+            hasFullAccess: false,
         };
     }
 
@@ -48,7 +49,7 @@ class VotingHistoryContent extends React.Component {
                 this.setState({
                     history: history,
                     loading: false,
-                    voteCreatable: voteCreatable
+                    voteCreatable: voteCreatable,
                 });
             })
             .catch((error) => {
@@ -57,20 +58,20 @@ class VotingHistoryContent extends React.Component {
             });
     };
 
-    checkFullAccess = async () => {
-        const hasFullAccess = await this.props.firebase.checkFullAccess();
+    checkFullAccess = async() => {
+        const hasFullAccess = await checkFullAccess(this.props.firebase);
         this.setState({hasFullAccess: hasFullAccess});
     };
 
     handleClick = (id) => {
         const redirectLink = `${ROUTES.VOTING}${ROUTES.SINGLE_VOTE.replace(
             ':id',
-            id
+            id,
         )}`;
         this.props.history.push(redirectLink);
     };
 
-    createNewVote = async () => {
+    createNewVote = async() => {
         this.setState({loading: true});
         const createNewVote = this.props.firebase.callFunction('createNewVote');
         createNewVote()

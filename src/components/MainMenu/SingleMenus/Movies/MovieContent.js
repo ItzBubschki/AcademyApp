@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import * as ROUTES from '../../../../constants/routes';
 import './style.css';
 import MovieOverviewHeader from '../../Header/MovieOverviewHeader';
+import checkFullAccess from '../../../Firebase/FirebaseFunctions';
 
 class MovieContent extends React.Component {
     constructor(props) {
@@ -32,19 +33,18 @@ class MovieContent extends React.Component {
             sortedBy: sortedBy,
             inspectedMovie: inspectedMovie,
             hasFullAccess: false,
-            error: ''
+            error: '',
         };
         this.checkAuthentication().then(() => this.getMovieList());
     }
 
-    checkAuthentication = async () => {
-        let hasFullAccess = false;
-        if (this.props.firebase.isUserLoggedIn()) {
-            hasFullAccess = await this.props.firebase.checkFullAccess();
-        } else {
-            await this.props.firebase.setStatePersistence('local').then(() => this.props.firebase.logInAnonymously());
+    checkAuthentication = async() => {
+        console.log('Movie checking if logged in.');
+        if (this.props.firebase.auth.currentUser != null) {
+            const hasFullAccess = await checkFullAccess(this.props.firebase);
+            this.setState({hasFullAccess: hasFullAccess});
         }
-        this.setState({hasFullAccess: hasFullAccess});
+
     };
     getMovieList = () => {
         this.props.firebase
@@ -67,11 +67,11 @@ class MovieContent extends React.Component {
     redirectToMovie = (movie) => {
         const redirectLink = `${ROUTES.MOVIES}${ROUTES.SINGLE_MOVIE.replace(
             ':id',
-            movie.id
+            movie.id,
         )}`;
         this.props.history.push({
             pathname: redirectLink,
-            state: {transferedMovie: movie}
+            state: {transferedMovie: movie},
         });
     };
 
@@ -87,7 +87,7 @@ class MovieContent extends React.Component {
 
     switchSortedBy = () => {
         let sortedBy = '';
-        switch (this.state.sortedBy) {
+        switch(this.state.sortedBy) {
             case 'rating':
                 sortedBy = 'alphabetical';
                 break;
@@ -106,9 +106,9 @@ class MovieContent extends React.Component {
     sortMovieList = (orderBy) => {
         let newMovieList = this.state.Movies;
 
-        switch (orderBy) {
+        switch(orderBy) {
             case 'rating':
-                newMovieList.sort(function (a, b) {
+                newMovieList.sort(function(a, b) {
                     if (a.TotalRating > b.TotalRating) {
                         return -1;
                     } else if (a.TotalRating < b.TotalRating) {
@@ -119,7 +119,7 @@ class MovieContent extends React.Component {
                 });
                 break;
             case 'date':
-                newMovieList.sort(function (a, b) {
+                newMovieList.sort(function(a, b) {
                     if (a.WatchDate > b.WatchDate) {
                         return -1;
                     } else if (a.WatchDate < b.WatchDate) {
@@ -130,7 +130,7 @@ class MovieContent extends React.Component {
                 });
                 break;
             default:
-                newMovieList.sort(function (a, b) {
+                newMovieList.sort(function(a, b) {
                     if (a.MovieName < b.MovieName) {
                         return -1;
                     } else if (a.TotalRating > b.TotalRating) {
@@ -149,7 +149,7 @@ class MovieContent extends React.Component {
         this.state.Movies.forEach((movie) => {
             if (
                 movie.MovieName.toLowerCase().includes(
-                    this.state.searchField.toLowerCase()
+                    this.state.searchField.toLowerCase(),
                 )
             ) {
                 currentList.push(movie);
@@ -198,7 +198,7 @@ class MovieObject extends React.Component {
         this.state = {
             movie: props.movie,
             alreadyVoted: true,
-            inspected: props.inspected
+            inspected: props.inspected,
         };
     }
 

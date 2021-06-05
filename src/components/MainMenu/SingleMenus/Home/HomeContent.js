@@ -10,9 +10,8 @@ class HomeContent extends React.Component {
         this.state = {
             President: '',
             Vice: '',
-            Members: []
+            Members: [],
         };
-        this.checkAuthentication().then(() => this.updateMembers());
     }
 
     updateMembers = () => {
@@ -25,14 +24,14 @@ class HomeContent extends React.Component {
                 1,
                 'Completed',
                 '==',
-                true
+                true,
             )
             .then((querySnapshot) => {
                 const doc = Object.values(querySnapshot.docs)[0];
                 const data = doc.data();
                 this.setState({
                     President: data.President,
-                    Vice: data.Vice
+                    Vice: data.Vice,
                 });
             })
             .catch((error) => {
@@ -55,13 +54,6 @@ class HomeContent extends React.Component {
             .catch((error) => {
                 console.log(error);
             });
-    };
-
-    checkAuthentication = async () => {
-        const authenticated = await this.props.firebase.isUserLoggedIn();
-        if (!authenticated) {
-            await this.props.firebase.setStatePersistence('local').then(() => this.props.firebase.logInAnonymously());
-        }
     };
 
     render() {
