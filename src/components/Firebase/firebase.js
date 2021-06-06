@@ -22,17 +22,15 @@ class Firebase {
         this.db = this.app.firestore();
         this.functions = this.app.functions('europe-west1');
         this.storage = this.app.storage('gs://academyapp-e3edd.appspot.com/');
-        console.log(`Logged in in the beginning ${this.auth.currentUser != null}.`);
-        this.auth.onAuthStateChanged(function(user) {
-            if (user) {
+        this.auth.onAuthStateChanged(async(user) => {
+            if (user?.email) {
                 console.log(`User ${user.email} logged in.`);
                 localStorage.setItem('loggedIn', 'true');
             } else {
-                this.auth.setStatePersistence('local');
-                this.auth.signInAnonymously().then(() => {
-                    console.log('Logged in anon.');
-                    localStorage.setItem('loggedIn', 'false');
-                });
+                await this.auth.setPersistence('local');
+                await this.auth.signInAnonymously();
+                console.log('Logged in anon.');
+                localStorage.setItem('loggedIn', 'false');
             }
         });
     }

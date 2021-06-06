@@ -12,6 +12,7 @@ class HomeContent extends React.Component {
             Vice: '',
             Members: [],
         };
+        this.updateMembers();
     }
 
     updateMembers = () => {
